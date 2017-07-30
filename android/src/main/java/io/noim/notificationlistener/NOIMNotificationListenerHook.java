@@ -21,4 +21,9 @@ public class NOIMNotificationListenerHook extends NotificationListenerService {
             callback.invoke(sbn);
         }
     }
+
+    @Override
+    public void onNotificationRemoved(StatusBarNotification sbn) {
+        // Nothing to see here but required
+    }
 }
