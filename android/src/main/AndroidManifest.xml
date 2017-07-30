@@ -1,7 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="io.noim.notificationlistener">
     <service android:name=".NotificationListener"
-             android:label="@string/service_name"
              android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
         <intent-filter>
             <action android:name="android.service.notification.NotificationListenerService" />
