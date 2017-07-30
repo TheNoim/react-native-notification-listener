@@ -12,6 +12,8 @@ import com.facebook.react.bridge.WritableNativeMap;
 
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
+import android.content.BroadcastReceiver;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,25 +25,23 @@ import java.util.List;
 
 public class NOIMNotificationListenerHook extends NotificationListenerService {
 
-    private List<Callback> callbacks = new ArrayList<Callback>();
+    private Callback callback;
 
-    public void addCallback(Callback callback) {
-        callbacks.add(callback);
+    public NOIMNotificationListenerHook(Callback callback) {
+        this.callback = callback;
     }
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
-        for (Callback callback : callbacks) {
-            JSONObject notification = new JSONObject();
-            try {
-                notification.put("title", sbn.getNotification().extras.get("android.title"));
-                notification.put("pkg", sbn.getPackageName());
-                notification.put("text", sbn.getNotification().extras.get("android.text"));
-                notification.put("textLines", sbn.getNotification().extras.get("android.textLines"));
-                callback.invoke(convertJsonToMap(notification));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        JSONObject notification = new JSONObject();
+        try {
+            notification.put("title", sbn.getNotification().extras.get("android.title"));
+            notification.put("pkg", sbn.getPackageName());
+            notification.put("text", sbn.getNotification().extras.get("android.text"));
+            notification.put("textLines", sbn.getNotification().extras.get("android.textLines"));
+            callback.invoke(convertJsonToMap(notification));
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
