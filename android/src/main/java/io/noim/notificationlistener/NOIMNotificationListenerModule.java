@@ -29,6 +29,6 @@ public class NOIMNotificationListenerModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void registerNotificationEvent(Callback callback, Callback successfullyCallback) {
         NOIMNotificationListenerHook service = new NOIMNotificationListenerHook(callback);
-        successfullyCallback.invoke(service);
+        successfullyCallback.invoke();
     }
 }
