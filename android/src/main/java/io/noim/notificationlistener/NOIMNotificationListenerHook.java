@@ -15,6 +15,7 @@ public class NOIMNotificationListenerHook extends NotificationListenerService {
         callbacks.add(callback);
     }
 
+
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
         for (Callback callback : callbacks) {

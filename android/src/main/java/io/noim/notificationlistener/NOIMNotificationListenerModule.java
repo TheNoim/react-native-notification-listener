@@ -13,12 +13,12 @@ public class NOIMNotificationListenerModule extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
 
-    private NotificationHookService notificationHookService = new NOIMNotificationListenerHook();
+    private static NotificationHookService notificationHookService = new NOIMNotificationListenerHook();
 
     public NOIMNotificationListenerModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
-    }
+    }s
 
     @Override
     public String getName() {
