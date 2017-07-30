@@ -1,6 +1,9 @@
 
 package io.noim.notificationlistener;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -26,7 +29,8 @@ public class NOIMNotificationListenerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void registerNotificationEvent(Callback callback) {
+    public void registerNotificationEvent(Callback callback, Callback successfullyCallback) {
         notificationHookService.addCallback(callback);
+        successfullyCallback.invoke();
     }
 }
