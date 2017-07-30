@@ -12,7 +12,7 @@ public class NOIMNotificationListenerModule extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
 
-    private NotificationHookService = new NOIMNotificationListenerHook();
+    private NotificationHookService notificationHookService = new NOIMNotificationListenerHook();
 
     public NOIMNotificationListenerModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -26,6 +26,6 @@ public class NOIMNotificationListenerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void registerNotificationEvent(Callback callback) {
-        NotificationHookService.addCallback(callback);
+        notificationHookService.addCallback(callback);
     }
 }
