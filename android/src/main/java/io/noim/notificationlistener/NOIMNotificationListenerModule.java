@@ -7,6 +7,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 import java.util.ArrayList;
 import java.util.List;
+import io.noim.notificationlistener.NOIMNotificationListenerHook;
 
 public class NOIMNotificationListenerModule extends ReactContextBaseJavaModule {
 
