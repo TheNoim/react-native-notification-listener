@@ -27,8 +27,8 @@ public class NOIMNotificationListenerHook extends NotificationListenerService {
 
     private Callback callback;
 
-    public NOIMNotificationListenerHook(Callback callback) {
-        this.callback = callback;
+    public NOIMNotificationListenerHook(Callback x) {
+        this.callback = x;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class NOIMNotificationListenerHook extends NotificationListenerService {
             notification.put("pkg", sbn.getPackageName());
             notification.put("text", sbn.getNotification().extras.get("android.text"));
             notification.put("textLines", sbn.getNotification().extras.get("android.textLines"));
-            callback.invoke(convertJsonToMap(notification));
+            this.callback.invoke(convertJsonToMap(notification));
         } catch (JSONException e) {
             e.printStackTrace();
         }
